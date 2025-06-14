@@ -80,11 +80,16 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
 
         public void Delete ()
         {
-            string query = @"";
+            Console.Write("Enter BlogId: ");
+            string blogId = Console.ReadLine()!;
+
+            string query = @"DELETE FROM [dbo].[Tbl_Blog]
+      WHERE @BlogId ";
 
             SqlConnection connection = new SqlConnection(_sqlConnectionString.ConnectionString);
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@BlogId", blogId);
             int result = command.ExecuteNonQuery();
             connection.Close();
             Console.WriteLine(result > 0 ? "Insert Succeed!" : "Insert Failed");

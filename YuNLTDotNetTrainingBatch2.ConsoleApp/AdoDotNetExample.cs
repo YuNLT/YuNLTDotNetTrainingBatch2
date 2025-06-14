@@ -106,10 +106,10 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
 
             string query = @"UPDATE [dbo].[Tbl_Blog]
    SET
-      ,[BlogTitle] = ''
-      ,[BlogAuthor] = ''
-      ,[BlogContent] = ''
- WHERE [BlogId] = @BlogId ";
+      ,[BlogTitle] = '@Title'
+      ,[BlogAuthor] = '@Author'
+      ,[BlogContent] = '@Content'
+ WHERE [BlogId] = @BlogId";
 
             SqlConnection connection = new SqlConnection(_sqlConnectionString.ConnectionString);
             connection.Open();
@@ -120,7 +120,7 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
             command.Parameters.AddWithValue("@BlogId", blogId);
             int result = command.ExecuteNonQuery();
             connection.Close();
-            Console.WriteLine(result > 0 ? "Insert Succeed!" : "Insert Failed");
+            Console.WriteLine(result > 0 ? "Update Succeed!" : "Update Failed");
         }
     }
 }

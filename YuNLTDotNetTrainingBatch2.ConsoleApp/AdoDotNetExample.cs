@@ -20,7 +20,7 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
             
             SqlConnection connection = new SqlConnection(_sqlConnectionString.ConnectionString);
             connection.Open();
-            string query = "SELECT * FROM Tbl_Student";
+            string query = "SELECT * FROM Tbl_Blog";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
@@ -32,14 +32,22 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
             //DataRow
             //DataColumn
 
+            List<BlogDto> lst = new List<BlogDto>();
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow row = dt.Rows[i];
-                Console.WriteLine(i);
-                Console.WriteLine(row["Id"]);
-                Console.WriteLine(row["Student_ID"]);
+                //Console.WriteLine("BlogId => " + row["BlogId"]);
+                //Console.WriteLine("BlogTitle => " + row["BlogTitle"]);
+                //Console.WriteLine("BlogAuthor => " + row["BlogAuthor"]);
+                //Console.WriteLine("BlogContent => " + row["BlogContent"]);
+                BlogDto blog = new BlogDto();
+                blog.BlogId = Convert.ToInt32(row["BlogId"]);
+                blog.BlogTitle = row["BlogTitle"].ToString()!;
+                blog.BlogAuthor = row["BlogAuthor"].ToString()!;
+                blog.BlogContent = row["BlogContent"].ToString()!;
+                lst.Add(blog);
             }
-
         }
 
         //read => data read
@@ -63,9 +71,9 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
            ,[BlogAuthor]
            ,[BlogContent])
      VALUES
-           ('@Title'
-           ,'@Author'
-           ,'@Content')";
+           (@Title
+           ,@Author
+           ,@Content)";
 
             SqlConnection connection = new SqlConnection(_sqlConnectionString.ConnectionString);
             connection.Open();
@@ -111,9 +119,9 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
 
             string query = @"UPDATE [dbo].[Tbl_Blog]
    SET
-      ,[BlogTitle] = '@Title'
-      ,[BlogAuthor] = '@Author'
-      ,[BlogContent] = '@Content'
+      ,[BlogTitle] = @Title
+      ,[BlogAuthor] = @Author
+      ,[BlogContent] = @Content
  WHERE [BlogId] = @BlogId";
 
             SqlConnection connection = new SqlConnection(_sqlConnectionString.ConnectionString);

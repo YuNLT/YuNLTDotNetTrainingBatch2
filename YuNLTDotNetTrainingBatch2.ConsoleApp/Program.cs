@@ -6,8 +6,12 @@ using YuNLTDotNetTrainingBatch2.ConsoleApp;
 //Dapper
 //EF Core
 
-AdoDotNetExample adoDotNet = new AdoDotNetExample();
-adoDotNet.Read();
-adoDotNet.Create();
+//AdoDotNetExample adoDotNet = new AdoDotNetExample();
+//adoDotNet.Read();
+//adoDotNet.Create();
+
+DapperExample dapperExample = new DapperExample();
+//dapperExample.Edit();
+dapperExample.Read();
 
 Console.ReadKey();

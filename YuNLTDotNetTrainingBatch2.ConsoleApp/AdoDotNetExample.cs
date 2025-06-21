@@ -118,11 +118,11 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
             string blogId = Console.ReadLine()!;
 
             string query = @"UPDATE [dbo].[Tbl_Blog]
-   SET
-      ,[BlogTitle] = @Title
-      ,[BlogAuthor] = @Author
-      ,[BlogContent] = @Content
- WHERE [BlogId] = @BlogId";
+                            SET
+                            ,[BlogTitle] = @Title
+                            ,[BlogAuthor] = @Author
+                            ,[BlogContent] = @Content
+                            WHERE [BlogId] = @BlogId";
 
             SqlConnection connection = new SqlConnection(_sqlConnectionString.ConnectionString);
             connection.Open();

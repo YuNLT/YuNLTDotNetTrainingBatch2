@@ -10,8 +10,12 @@ using YuNLTDotNetTrainingBatch2.ConsoleApp;
 //adoDotNet.Read();
 //adoDotNet.Create();
 
-DapperExample dapperExample = new DapperExample();
+//DapperExample dapperExample = new DapperExample();
 //dapperExample.Edit();
-dapperExample.Read();
+//dapperExample.Read();
 
+EfCoreExample efCoreExample = new EfCoreExample();
+//efCoreExample.Read();
+//efCoreExample.Delete();
+efCoreExample.InsertDeletedData();
 Console.ReadKey();

@@ -88,16 +88,9 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
 
             var exit = IsExist(id);
             if (!exit) return;
-            var blog = new BlogModel
-            {
-                BlogId = id,
-                BlogTitle = title,
-                BlogAuthor = author,
-                BlogContent = content
-            };
 
             AppDbContext db = new AppDbContext();
-            var item = db.Blogs.Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.BlogId == blog.BlogId);
+            var item = db.Blogs.Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.BlogId == id);
             item.BlogTitle = title;
             item.BlogAuthor = author;
             item.BlogContent = content;
@@ -127,7 +120,7 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
 
         public void InsertDeletedData()
         {
-            Console.WriteLine("Enter BlogId (optional - press Enter to auto-generate): ");
+            Console.WriteLine("Enter BlogId : ");
             string? idInput = Console.ReadLine();
             int blogId = 0;
             bool hasId = int.TryParse(idInput, out blogId);
@@ -141,7 +134,8 @@ namespace YuNLTDotNetTrainingBatch2.ConsoleApp
             {
                 BlogTitle = title,
                 BlogAuthor = author,
-                BlogContent = content
+                BlogContent = content,
+                DeleteFlag = false
             };
             if (hasId)
             {

@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuNLTDotNetTrainingBatch2.ConsoleApp", "YuNLTDotNetTrainingBatch2.ConsoleApp\YuNLTDotNetTrainingBatch2.ConsoleApp.csproj", "{0E13D9C7-4969-451B-86F0-22795A1E8C52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuNLTDotNetTrainingBatch2.Database", "YuNLTDotNetTrainingBatch2.Database\YuNLTDotNetTrainingBatch2.Database.csproj", "{9C81F384-E735-4595-89D4-BF5349F3899D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuNLTDotNetTrainingBatch2.POS", "YuNLTDotNetTrainingBatch2.POS\YuNLTDotNetTrainingBatch2.POS.csproj", "{12266001-2A49-4E47-8EBD-80CEEDBE70BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{0E13D9C7-4969-451B-86F0-22795A1E8C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E13D9C7-4969-451B-86F0-22795A1E8C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E13D9C7-4969-451B-86F0-22795A1E8C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C81F384-E735-4595-89D4-BF5349F3899D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C81F384-E735-4595-89D4-BF5349F3899D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C81F384-E735-4595-89D4-BF5349F3899D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C81F384-E735-4595-89D4-BF5349F3899D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12266001-2A49-4E47-8EBD-80CEEDBE70BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12266001-2A49-4E47-8EBD-80CEEDBE70BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12266001-2A49-4E47-8EBD-80CEEDBE70BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12266001-2A49-4E47-8EBD-80CEEDBE70BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

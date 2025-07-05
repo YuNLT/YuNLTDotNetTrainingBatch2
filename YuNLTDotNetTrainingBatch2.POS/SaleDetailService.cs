@@ -17,11 +17,11 @@ namespace YuNLTDotNetTrainingBatch2.POS
                 .ToList();
             foreach ( var item in lst )
             {
-                Console.WriteLine("SaleDetailID => " + item.SaleDetailId);
-                Console.WriteLine("SaleID => " + item.SaleId);
-                Console.WriteLine("ProductID => " + item.ProductId);
-                Console.WriteLine("Quantity => " + item.Quantity);
-                Console.WriteLine("Price => " + item.Price);
+                Console.Write("SaleDetailID => " + item.SaleDetailId);
+                Console.Write("SaleID => " + item.SaleId);
+                Console.Write("ProductID => " + item.ProductId);
+                Console.Write("Quantity => " + item.Quantity);
+                Console.Write("Price => " + item.Price);
             }
         }
 
@@ -35,11 +35,11 @@ namespace YuNLTDotNetTrainingBatch2.POS
             AppDbContext db = new AppDbContext();
             var item = db.TblSaleDetails.Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.SaleDetailId == id);
             if (item is null) return;
-            Console.WriteLine("SaleDetailID => " + item.SaleDetailId);
-            Console.WriteLine("SaleID => " + item.SaleId);
-            Console.WriteLine("ProductID => " + item.ProductId);
-            Console.WriteLine("Quantity => " + item.Quantity);
-            Console.WriteLine("Price => " + item.Price);
+            Console.Write("SaleDetailID => " + item.SaleDetailId);
+            Console.Write("SaleID => " + item.SaleId);
+            Console.Write("ProductID => " + item.ProductId);
+            Console.Write("Quantity => " + item.Quantity);
+            Console.Write("Price => " + item.Price);
         }
 
         public void Create()

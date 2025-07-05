@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YuNLTDotNetTrainingBatch2.Database\YuNLTDotNetTrainingBatch2.Database.csproj" />
+  </ItemGroup>
+
 </Project>

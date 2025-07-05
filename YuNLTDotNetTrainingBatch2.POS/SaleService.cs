@@ -53,7 +53,7 @@ namespace YuNLTDotNetTrainingBatch2.POS
                 goto PriceInput;
             }
         DateInput:
-            Console.WriteLine("Enter Sale Date(e.g., 2025-06-22 or MM/dd/yyyy):: ");
+            Console.WriteLine("Enter Sale Date(e.g., 2025-06-22 or MM/dd/yyyy): ");
             var dateInput = Console.ReadLine()!;
             bool isDateTime = DateTime.TryParse(dateInput, out DateTime saleDate);
             if (!isDateTime)

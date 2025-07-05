@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SaleDetailService.cs" />
+    <Compile Remove="SaleService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\YuNLTDotNetTrainingBatch2.Database\YuNLTDotNetTrainingBatch2.Database.csproj" />
+    <ProjectReference Include="..\YuNLTDotNetTrainingBatch2.Domain\YuNLTDotNetTrainingBatch2.Domain.csproj" />
   </ItemGroup>
 
 </Project>

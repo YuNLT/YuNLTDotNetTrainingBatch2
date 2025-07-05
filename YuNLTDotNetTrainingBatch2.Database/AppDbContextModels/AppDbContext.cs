@@ -15,11 +15,17 @@ public partial class AppDbContext : DbContext
     {
     }
 
+    public virtual DbSet<TblPosition> TblPositions { get; set; }
+
     public virtual DbSet<TblProduct> TblProducts { get; set; }
 
     public virtual DbSet<TblSale> TblSales { get; set; }
 
     public virtual DbSet<TblSaleDetail> TblSaleDetails { get; set; }
+
+    public virtual DbSet<TblStaffRegistration> TblStaffRegistrations { get; set; }
+
+    public virtual DbSet<TblStaffUser> TblStaffUsers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -27,6 +33,23 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<TblPosition>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Tbl_Position");
+
+            entity.HasIndex(e => e.PositionCode, "UQ_PositionCode").IsUnique();
+
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.DeleteFlag).HasDefaultValue(false);
+            entity.Property(e => e.Description).HasMaxLength(50);
+            entity.Property(e => e.PositionCode).HasMaxLength(50);
+            entity.Property(e => e.PositionId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("PositionID");
+        });
+
         modelBuilder.Entity<TblProduct>(entity =>
         {
             entity.HasKey(e => e.ProductId).HasName("PK__Tbl_Prod__B40CC6ED05262C43");
@@ -37,12 +60,10 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Createat)
                 .HasColumnType("datetime")
                 .HasColumnName("CREATEAT");
-            entity.Property(e => e.PName)
-                .HasMaxLength(50)
-                .HasColumnName("P_NAME");
             entity.Property(e => e.Price)
                 .HasColumnType("decimal(8, 2)")
                 .HasColumnName("PRICE");
+            entity.Property(e => e.ProductName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblSale>(entity =>
@@ -74,6 +95,59 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.SaleId).HasColumnName("SaleID");
         });
+
+        modelBuilder.Entity<TblStaffRegistration>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Tbl_StaffRegistration");
+
+            entity.HasIndex(e => e.StaffCode, "UQ_StaffCode").IsUnique();
+
+            entity.Property(e => e.Address).HasMaxLength(256);
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.CreatedUserCode).HasMaxLength(50);
+            entity.Property(e => e.DeleteFlag).HasDefaultValue(false);
+            entity.Property(e => e.Education).HasMaxLength(100);
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.FatherName).HasMaxLength(50);
+            entity.Property(e => e.MaritalStatus).HasMaxLength(50);
+            entity.Property(e => e.ModeifiedUserCode).HasMaxLength(50);
+            entity.Property(e => e.ModifiedAt).HasColumnType("datetime");
+            entity.Property(e => e.MotherName).HasMaxLength(50);
+            entity.Property(e => e.Nrc)
+                .HasMaxLength(50)
+                .HasColumnName("NRC");
+            entity.Property(e => e.PhoneNo).HasMaxLength(50);
+            entity.Property(e => e.PositionCode).HasMaxLength(50);
+            entity.Property(e => e.SpouseName).HasMaxLength(50);
+            entity.Property(e => e.StaffCode).HasMaxLength(50);
+            entity.Property(e => e.StaffId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("StaffID");
+            entity.Property(e => e.StaffName).HasMaxLength(50);
+            entity.Property(e => e.Status).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TblStaffUser>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("TblStaffUser");
+
+            entity.Property(e => e.CreattedAt).HasColumnType("datetime");
+            entity.Property(e => e.DeleteFlag).HasDefaultValue(false);
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.Password).HasMaxLength(50);
+            entity.Property(e => e.PhoneNo).HasMaxLength(50);
+            entity.Property(e => e.PositionCode).HasMaxLength(50);
+            entity.Property(e => e.StaffCode).HasMaxLength(50);
+            entity.Property(e => e.StaffUserId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("StaffUserID");
+        });
+        modelBuilder.HasSequence("PositionCodeSeq");
+        modelBuilder.HasSequence("StaffCodeSeq");
 
         OnModelCreatingPartial(modelBuilder);
     }
